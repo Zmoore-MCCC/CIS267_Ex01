@@ -12,7 +12,6 @@ public class PlayerScore : MonoBehaviour
     void Start()
     {
         playerScore = 0;
-        guiScore.text = "Hello";
     }
 
     public int getScore()

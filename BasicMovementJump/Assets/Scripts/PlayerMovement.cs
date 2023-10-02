@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -100,6 +101,15 @@ public class PlayerMovement : MonoBehaviour
             //delete object from screen
             Destroy(collision.gameObject);
 
+        }
+        else if(collision.gameObject.CompareTag("CoinCollectable"))
+        {
+            //get value of collectable
+            int collectableValue = collision.GetComponent<Collectable>().getCollectableValue();
+            //destory collectable
+            collision.GetComponent<Collectable>().destroyCollectable();
+            //add to player score
+            GetComponent<PlayerScore>().setPlayerScore(collectableValue);
         }
     }
 }
