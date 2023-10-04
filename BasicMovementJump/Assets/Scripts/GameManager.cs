@@ -2,12 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameManager
+public class GameManager : MonoBehaviour
 {
-    private static int playerMovementSpeed;
+    private bool gameOver;
 
-    public static int getPlayerMovementSpeed()
+    private void Start()
     {
-        return playerMovementSpeed;
+        setGameOver(false);
+    }
+
+    public bool getGameOver()
+    {
+        return gameOver;
+    }
+
+    public void setGameOver(bool g)
+    {
+        gameOver = g;
+        evaluateGameState();
+    }
+
+    public void evaluateGameState()
+    {
+        if(gameOver)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 }
